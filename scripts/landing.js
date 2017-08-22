@@ -11,7 +11,7 @@ var pointsArray = document.getElementsByClassName('point');
      }
 
      for (var i = 0; i < points.length; i++) {
-        revealPoint(i);
+        revealPoint(i); 
      }
  } ;
 
