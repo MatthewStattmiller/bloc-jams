@@ -64,6 +64,9 @@ var albumPicasso = {
      }
  };
 
+ var child = document.getElementsByClassName('album-view-title')[0];
+ var noParent = document.querySelector('html');
+
 var findParentByClassName = function(element, targetClass) {
       var currentParent = element.parentElement;
       while (currentParent.className != targetClass) {
@@ -126,11 +129,12 @@ var findParentByClassName = function(element, targetClass) {
 
          if (event.target.parentElement.className === 'album-view-song-item') {
             
+             event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
              var songItem = getSongItem(event.target);
-              
-              if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
-                  songItem.innerHTML = playButtonTemplate;
-              }
+ 
+             if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
+                 songItem.innerHTML = playButtonTemplate;
+             }
          }
      });
 
