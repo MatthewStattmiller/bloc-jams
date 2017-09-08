@@ -153,5 +153,5 @@ var findParentByClassName = function(element, targetClass) {
              clickHandler(event.target);
 
          });
-     }
+     }  
  };
