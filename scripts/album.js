@@ -106,6 +106,45 @@ var updateSeekBarWhileSongPlays = function() {
      }
  };
 
+ var setCurrentTimeInPlayerBar = function(currentTime){
+    var curTime = $(".current-time").html(filterTimeCode(currentTime));
+   
+ };
+
+ var setTotalTimeInPlayerBar = function(totalTime){
+        var totTime = $(".total-time").html(filterTimeCode(totalTime));
+ };
+
+ var filterTimeCode = function(timeInSeconds){
+    
+    var time = parseFloat(timeInSeconds);
+    var wholeMinutes = Math.floor(time / 60);
+    var wholeSeconds = Math.floor(time - wholeMinutes * 60);
+    if (wholeSeconds >= 10) {
+        var formatTime = wholeMinutes + ":" + wholeSeconds;
+    }
+    else{
+       var formatTime = wholeMinutes + ":0" + wholeSeconds; 
+    }
+    return formatTime;
+ };
+
+ var updateSeekBarWhileSongPlays = function() {
+ 
+    if (currentSoundFile) {
+        currentSoundFile.bind('timeupdate', function(event) {
+            var seekBarFillRatio = this.getTime() / this.getDuration();
+            var $seekBar = $('.seek-control .seek-bar');
+ 
+            updateSeekPercentage($seekBar, seekBarFillRatio);
+          
+            setCurrentTimeInPlayerBar(this.getTime());
+            setTotalTimeInPlayerBar(this.getDuration());
+        });
+    }
+ };
+
+
 var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
     // #1
