@@ -109,7 +109,7 @@
   
   .seek-bar .fill {
       background: white;
-      width: 36%;
+      width: 0%;
       height: 0.25rem;
       border-radius: 2px;
   }
@@ -119,13 +119,16 @@
       height: 0.5rem;
       width: 0.5rem;
       background: white;
-      left: 36%;
+      
       margin-left: -0.25rem;
       top: 50%;
       margin-top: -0.25rem;
       border-radius: 50%;
       cursor: pointer;
-      transition: all 100ms ease-in-out;
+      transition: width 100ms ease-in-out,
+                 height 100ms ease-in-out,
+                 margin-top 100ms ease-in-out,
+                 margin-left 100ms ease-in-out;
   }
   
   .seek-bar:hover .thumb {
@@ -170,7 +173,7 @@
           padding: 0;
           width: 100%;
           text-align: center;   
-      }
+      } 
       
       .player-bar .main-controls {
           min-height: 3.5rem;
